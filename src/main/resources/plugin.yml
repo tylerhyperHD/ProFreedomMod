@@ -1,0 +1,7 @@
+name: ProFreedomMod
+main: com.tylerhyperhd.profreedommod.ProFreedomMod
+version: 1.0
+description: Plugin for the ProFreedom server.
+depend: [WorldEdit]
+softdepend: [Essentials, LibsDisguises]
+authors: [tylerhyperHD]
