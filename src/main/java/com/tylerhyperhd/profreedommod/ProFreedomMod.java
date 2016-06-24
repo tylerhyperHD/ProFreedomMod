@@ -3,6 +3,7 @@ package com.tylerhyperhd.profreedommod;
 import com.tylerhyperhd.profreedommod.commands.Command_ban;
 import com.tylerhyperhd.profreedommod.commands.Command_creative;
 import com.tylerhyperhd.profreedommod.commands.Command_help;
+import com.tylerhyperhd.profreedommod.commands.Command_opall;
 import com.tylerhyperhd.profreedommod.commands.Command_pro;
 import com.tylerhyperhd.profreedommod.commands.Command_survival;
 import com.tylerhyperhd.profreedommod.commands.ProCmd;
@@ -25,7 +26,7 @@ public class ProFreedomMod extends JavaPlugin {
     public static PluginLogger logger;
     public ConfigGrabber cg;
     public AdminList al;
-    public Command_help ch;
+    public CommandBlocker cb;
     private File defaultConfigFile = null;
     private FileConfiguration defaultConfig = null;
     private FileConfiguration banConfig = null;
@@ -37,7 +38,7 @@ public class ProFreedomMod extends JavaPlugin {
         ProFreedomMod.logger = new PluginLogger(plugin);
         this.cg = new ConfigGrabber(plugin);
         this.al = new AdminList(plugin);
-        this.ch = new Command_help(plugin);
+        this.cb = new CommandBlocker(plugin);
     }
 
     @Override
@@ -62,14 +63,18 @@ public class ProFreedomMod extends JavaPlugin {
     }
 
     public void registerCmds() {
+        ProCmd help = new Command_help(plugin);
         ProCmd pro = new Command_pro(plugin);
-        pro.register();
         ProCmd ban = new Command_ban(plugin);
-        ban.register();
         ProCmd creative = new Command_creative(plugin);
-        creative.register();
         ProCmd survival = new Command_survival(plugin);
+        ProCmd opall = new Command_opall(plugin);
+        help.register();
+        pro.register();
+        ban.register();
+        creative.register();
         survival.register();
+        opall.register();
     }
 
     @Override

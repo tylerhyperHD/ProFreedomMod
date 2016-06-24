@@ -43,6 +43,8 @@ import org.bukkit.entity.Player;
 public abstract class ProCmd implements CommandExecutor, TabExecutor {
 
     public static String PERM_MESSAGE = ChatColor.RED + "You do not have permission to perform this command.";
+    public static String U_R_OP = ChatColor.YELLOW + "You are now op!";
+    public static String U_R_NOT_OP = ChatColor.RED + "You are no longer op!";
     
     protected final String command;
     protected final String description;
@@ -176,5 +178,17 @@ public abstract class ProCmd implements CommandExecutor, TabExecutor {
     
     public void msgNoPerms(CommandSender sender) {
         sender.sendMessage(PERM_MESSAGE);
+    }
+    
+    public void adminAnnounce(Player player_p, String msg) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(ChatColor.RED + player_p.getName() + " - " + msg);
+        }
+    }
+    
+    public void adminAnnounce(Player player_p, ChatColor color, String msg) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.sendMessage(color + player_p.getName() + " - " + msg);
+        }
     }
 }

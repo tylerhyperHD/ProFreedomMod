@@ -67,4 +67,8 @@ public class AdminList {
             return false;
         }
     }
+    
+    public boolean isAtLeastSAdmin(Player player) {
+        return isAdmin(player);
+    }
 }
