@@ -1,6 +1,5 @@
 package com.tylerhyperhd.profreedommod;
 
-import com.tylerhyperhd.profreedommod.commands.Command_ban;
 import com.tylerhyperhd.profreedommod.commands.Command_creative;
 import com.tylerhyperhd.profreedommod.commands.Command_help;
 import com.tylerhyperhd.profreedommod.commands.Command_opall;
@@ -27,6 +26,7 @@ public class ProFreedomMod extends JavaPlugin {
     public ConfigGrabber cg;
     public AdminList al;
     public CommandBlocker cb;
+    public ProFreedomAPI pfapi;
     private File defaultConfigFile = null;
     private FileConfiguration defaultConfig = null;
     private FileConfiguration banConfig = null;
@@ -39,6 +39,7 @@ public class ProFreedomMod extends JavaPlugin {
         this.cg = new ConfigGrabber(plugin);
         this.al = new AdminList(plugin);
         this.cb = new CommandBlocker(plugin);
+        this.pfapi = new ProFreedomAPI(plugin);
     }
 
     @Override
@@ -65,13 +66,11 @@ public class ProFreedomMod extends JavaPlugin {
     public void registerCmds() {
         ProCmd help = new Command_help(plugin);
         ProCmd pro = new Command_pro(plugin);
-        ProCmd ban = new Command_ban(plugin);
         ProCmd creative = new Command_creative(plugin);
         ProCmd survival = new Command_survival(plugin);
         ProCmd opall = new Command_opall(plugin);
         help.register();
         pro.register();
-        ban.register();
         creative.register();
         survival.register();
         opall.register();

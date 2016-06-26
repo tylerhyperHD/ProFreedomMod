@@ -3,8 +3,6 @@
  */
 package com.tylerhyperhd.profreedommod;
 
-import java.util.logging.Logger;
-
 public class PluginLogger {
     
     private static ProFreedomMod plugin;
